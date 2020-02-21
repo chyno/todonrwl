@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "startapi" : "ng serve .-api",
+    "buildapi" : "ng build .-api",
     "ng": "ng",
     "nx": "nx",
     "start": "ng serve",

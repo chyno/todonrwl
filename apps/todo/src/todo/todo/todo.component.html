@@ -1,4 +1,4 @@
 <h1>Todos Sample page</h1>
   <ul>
-    <li *ngFor="let t of todos$ | async" class="todo">{{ t.title }}</li>
+    <li *ngFor="let t of todos$ | async" class="todo">{{ t.title + ' ' + t.description }}</li>
   </ul>

@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Todo} from '../todo';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { Todo } from '@chynoorg/data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private todos: Todo[];
-  constructor(private http: HttpClient) {
-     this.todos = [{ title: "Todo 1"}, { title: "Todo 2" }];
 
-   }
+  constructor(private http: HttpClient) {
+    }
 
   public getTodos() :  Observable<Todo[]> {
     return this.http.get<Todo[]>('/api/todos');
@@ -20,6 +18,6 @@ export class TodoService {
   }
 
   public addTodo(todo : Todo) {
-    return this.todos.push(todo);
+    // return this.todos.push(todo);
   }
 }
