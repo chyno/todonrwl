@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Todo} from '../todo';
-//import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -8,14 +8,15 @@ import { Observable, of } from 'rxjs';
 })
 export class TodoService {
   private todos: Todo[];
-  constructor() {
+  constructor(private http: HttpClient) {
      this.todos = [{ title: "Todo 1"}, { title: "Todo 2" }];
 
    }
 
   public getTodos() :  Observable<Todo[]> {
-    //return this.http.get<Todo[]>('/api/todos');
-    return of(this.todos);
+    return this.http.get<Todo[]>('/api/todos');
+
+    //return of(this.todos);
   }
 
   public addTodo(todo : Todo) {
