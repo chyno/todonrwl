@@ -198,6 +198,61 @@
           }
         }
       }
+    },
+    ".-graphapi": {
+      "root": "apps/graphapi",
+      "sourceRoot": "apps/graphapi/src",
+      "projectType": "application",
+      "prefix": ".-graphapi",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/graphapi",
+            "main": "apps/graphapi/src/main.ts",
+            "tsConfig": "apps/graphapi/tsconfig.app.json",
+            "assets": ["apps/graphapi/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/graphapi/src/environments/environment.ts",
+                  "with": "apps/graphapi/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": ".-graphapi:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/graphapi/tsconfig.app.json",
+              "apps/graphapi/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/graphapi/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/graphapi/jest.config.js",
+            "tsConfig": "apps/graphapi/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

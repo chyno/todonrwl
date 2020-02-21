@@ -1,0 +1,15 @@
+# apps/api/src/app/schema.graphql
+
+type Todo {
+    id: Int!
+    title: String
+    description: String
+}
+
+type Query {
+    allTodos: [Todo]
+}
+
+type Mutation {
+    addTodo(title: String, description: String): Todo
+}
