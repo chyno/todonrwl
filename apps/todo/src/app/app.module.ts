@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from '../todo/todo/todo.component';
-import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent,TodoComponent],
-  imports: [BrowserModule,   HttpClientModule, GraphQLModule],
+  imports: [BrowserModule, GraphQLModule,  HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })
